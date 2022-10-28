@@ -11,12 +11,13 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.get('/user', (req, res)=>{
-    res.send('You must log in');
-})
 
 app.use('/user',(req,res,next) => {
-    if(isUser()) next();
+    isUser= () => {
+        res.send('You must log in')
+    }
+    if(isUser()) 
+    res.send('You must log in')
     else res.show('LogIn.html') //czemu nie działa przejscie do strony
 })
 
