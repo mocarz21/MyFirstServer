@@ -11,6 +11,10 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.get('/user', (req, res)=>{
+    res.send('You must log in');
+})
+
 app.use('/user',(req,res,next) => {
     if(isUser()) next();
     else res.show('LogIn.html') //czemu nie działa przejscie do strony
@@ -21,6 +25,11 @@ app.use(express.static(path.join(__dirname, '/views/public/')));
 app.get('/', (req, res)=>{
     res.show('index.html');
 })
+
+app.get('/home', (req, res)=>{
+    res.show('index.html');
+})
+
 app.get('/about', (req, res) => {
     res.show('about.html');
 })
